@@ -69,16 +69,13 @@ void POWER_SYSTEM_MAINFRAME::OnTcnSelchangeFuncTab(NMHDR *pNMHDR, LRESULT *pResu
 BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();                        
-
+	this->SetWindowTextW(L"权限系统");
 	// TODO:  在此添加额外的初始化
-	//为Tab Control增加页面
-	func_tab.InsertItem(0, _T("查询"));
-	func_tab.InsertItem(1, TEXT("我的"));
-	func_tab.InsertItem(2, TEXT("添加用户"));
-	//创建对话框
-	query_page.Create(IDD_QUERY_TAB, &func_tab);
-	info_page.Create(IDD_PERSONAL_INFO, &func_tab);
-	add_user_page.Create(IDD_ADD_USER, &func_tab);
+	//获取当前用户与权限角色
+	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
+	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
+	user = pWnd->getUser();
+	character = pWnd->getCharacter();
 	//设定在Tab内显示的范围
 	CRect rc;
 	func_tab.GetClientRect(rc);
@@ -86,21 +83,31 @@ BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 	rc.bottom -= 0;
 	rc.left += 0;
 	rc.right -= 0;
-	query_page.MoveWindow(&rc);
+	//为Tab Control增加页面
+	int nItem = 0;
+	if (character->getPrivilege() & P_QUERY)
+	{
+		func_tab.InsertItem(nItem, _T("查询"));
+		pDlgPage[nItem++] = &query_page;
+		query_page.Create(IDD_QUERY_TAB, &func_tab);
+		query_page.MoveWindow(&rc);
+	}
+	if (character->getPrivilege() & P_ADD_USER)
+	{
+		func_tab.InsertItem(nItem, TEXT("添加用户"));
+		pDlgPage[nItem++] = &add_user_page;
+		add_user_page.Create(IDD_ADD_USER, &func_tab);
+		add_user_page.MoveWindow(&rc);
+	}
+
+	func_tab.InsertItem(nItem, TEXT("我的"));
+	info_page.Create(IDD_PERSONAL_INFO, &func_tab);
+	pDlgPage[nItem++] = &info_page;
 	info_page.MoveWindow(&rc);
-	add_user_page.MoveWindow(&rc);
-	//把对话框对象指针保存起来
-	pDlgPage[0] = &query_page;
-	pDlgPage[1] = &info_page;
-	pDlgPage[2] = &add_user_page;
 	//显示初始页面
 	pDlgPage[0]->ShowWindow(SW_SHOW);
 	//保存当前选择
 	m_CurSelTab = 0;
-	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
-	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
-	user = pWnd->getUser();
-
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }

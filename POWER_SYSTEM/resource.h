@@ -12,6 +12,8 @@
 #define IDD_QUERY_TAB                   134
 #define IDD_PERSONAL_INFO               136
 #define IDD_ADD_USER                    138
+#define IDD_DIALOG1                     140
+#define IDD_UPDATE                      140
 #define IDC_LOGIN_NAME_INPUT            1003
 #define IDC_PASSWORD_INPUT              1004
 #define IDC_PWD_INPUT                   1004
@@ -44,14 +46,18 @@
 #define IDC_EMAIL_REG_INPUT             1041
 #define IDC_EMAIL_REG_STATIC            1042
 #define IDC_ADD_USER_BUTTON             1043
+#define IDC_LIST1                       1044
+#define IDC_USER_LIST                   1044
+#define IDC_BAN_BUTTON                  1045
+#define IDC_FREE_BUTTON                 1046
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        140
+#define _APS_NEXT_RESOURCE_VALUE        142
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1044
+#define _APS_NEXT_CONTROL_VALUE         1047
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

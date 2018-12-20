@@ -4,19 +4,13 @@ using namespace std;
 string userDAO::login_check(string username, string pwd)
 {
 	Connection *db = new Connection();
-	/*mysqlx::RowResult rs = db->mySession->sql(
-		"select userID from user where username = ? and password = ?").execute();*/
 	sql::PreparedStatement *pst = db->con->prepareStatement(sql::SQLString(
 		"select userID from user where username = ? and password = ?")
 	);
 	
-	//CString usname = (LPWSTR)(LPCSTR)username.c_str();
 	pst->setString(1, username.c_str());
 	pst->setString(2, pwd.c_str());
 	sql::ResultSet* rs = pst->executeQuery();
-	//sql::Statement* stmt = db->con->createStatement();
-	//sql::ResultSet* rs = stmt->executeQuery("select * from user where username = lixiao and password = 123456");
-	//sql::ResultSet* rs = stmt->executeQuery(sql::SQLString("select * from user"));
 	while (rs->next())
 	{
 		return string(rs->getString("userID").c_str());

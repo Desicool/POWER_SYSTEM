@@ -87,8 +87,13 @@ void InfoDlg::OnBnClickedQuitButton()
 	// TODO: 在此添加控件通知处理程序代码
 	delete user;
 	//OnCancel();
-	HWND hWnd = ::FindWindow(NULL, L"Dialog");
-	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
+	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
+	CPOWER_SYSTEMDlg* pLogin = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
+	pLogin->GetDlgItem(IDC_LOGIN_NAME_INPUT)->SetWindowTextW(NULL);
+	pLogin->GetDlgItem(IDC_PASSWORD_INPUT)->SetWindowTextW(NULL);
+
+	hWnd = ::FindWindow(NULL, L"权限系统");
+	POWER_SYSTEM_MAINFRAME* pWnd = (POWER_SYSTEM_MAINFRAME*)POWER_SYSTEM_MAINFRAME::FromHandle(hWnd);
 	pWnd->EndDialog(0);
 
 }
@@ -97,10 +102,6 @@ void InfoDlg::OnBnClickedQuitButton()
 void InfoDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
-	//user = ((POWER_SYSTEM_MAINFRAME*)GetWindow(IDD_MAINFRAME))->getUser();
-	if (user)
-	{
-		
-	}
+
 	// TODO: 在此处添加消息处理程序代码
 }

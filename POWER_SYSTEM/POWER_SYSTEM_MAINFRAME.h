@@ -26,6 +26,7 @@ protected:
 private:
 	CFont* m_Font;
 	User* user;
+	Character* character;
 public:
 	int m_CurSelTab;
 	CQueryDlg query_page;
