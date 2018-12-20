@@ -49,6 +49,12 @@
     <Filter Include="源文件\View\MainFrame\func_page">
       <UniqueIdentifier>{6166530b-4c79-4670-afd0-34dbfbba0920}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\service">
+      <UniqueIdentifier>{37ee4daa-0c9e-4dd8-9b54-d43795817413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\service">
+      <UniqueIdentifier>{574ee341-e663-4c47-8472-feb03913d7a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -96,6 +102,9 @@
     <ClInclude Include="AddUserDlg.h">
       <Filter>头文件\View\MainFrame\func_page</Filter>
     </ClInclude>
+    <ClInclude Include="solveUTF8.h">
+      <Filter>头文件\service</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="POWER_SYSTEM.cpp">
@@ -133,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="QueryDlg.cpp">
       <Filter>源文件\View\MainFrame\func_page</Filter>
+    </ClCompile>
+    <ClCompile Include="solveUTF8.cpp">
+      <Filter>源文件\service</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

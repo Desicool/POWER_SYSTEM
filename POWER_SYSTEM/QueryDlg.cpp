@@ -42,6 +42,9 @@ BOOL CQueryDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	GetWindowRect(&rc);
 	// TODO:  在此添加额外的初始化
+	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
+	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
+	character = pWnd->getCharacter();
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }
@@ -76,7 +79,19 @@ void CQueryDlg::OnSize(UINT nType, int cx, int cy)
 void CQueryDlg::OnBnClickedQueryButton()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	CString msg;
-	msg.Format(_T("%d %d %d %d"), rc.top, rc.bottom, rc.left, rc.right);
+	CString msg, ad;
+	ad = CString(character->get_character_name().c_str());
+	msg.Format(_T("您当前的身份为：%s\r\n您当前可使用的功能有：\r\n"),ad);
+	int tmp = character->getPrivilege();
+	if (tmp & P_QUERY)
+	{
+		ad.Format(_T("\t查询功能\r\n"));
+		msg += ad;
+	}
+	if (tmp & P_ADD_USER)
+	{
+		ad.Format(_T("\t添加用户\r\n"));
+		msg += ad;
+	}
 	MessageBox(msg);
 }

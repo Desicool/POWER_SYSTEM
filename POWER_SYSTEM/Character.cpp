@@ -19,8 +19,11 @@ void Character::init(string userID)
 	{
 		ID = rs->getString(
 			(sql::SQLString)"characterID").c_str();
-		character_name = rs->getString(
-			(sql::SQLString)"characterName").c_str();
+		sql::SQLString tm = rs->getString(
+			(sql::SQLString)"characterName");
+		const char* tmp = tm.c_str();
+		CString tt = UTF82WCS(tmp);
+		character_name = tt;
 	}
 	delete rs;
 	privilege = characterDAO::get_privilege(ID);

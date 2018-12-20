@@ -1,6 +1,7 @@
 #pragma once
 #include "afxwin.h"
-
+#include "User.h"
+#include "POWER_SYSTEMDlg.h"
 
 // CQueryDlg 对话框
 
@@ -18,6 +19,7 @@ public:
 #endif
 private:
 	CRect rc;
+	Character* character;
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 

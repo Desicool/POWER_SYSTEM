@@ -203,6 +203,7 @@
     <ClInclude Include="POWER_SYSTEM_MAINFRAME.h" />
     <ClInclude Include="QueryDlg.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="solveUTF8.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="User.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="POWER_SYSTEMDlg.cpp" />
     <ClCompile Include="POWER_SYSTEM_MAINFRAME.cpp" />
     <ClCompile Include="QueryDlg.cpp" />
+    <ClCompile Include="solveUTF8.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

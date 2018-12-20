@@ -43,6 +43,7 @@ public:
 	{
 		return user;
 	}
+	Character* getCharacter() { return character; }
 	CEdit username_input;
 	CEdit password_input;
 };

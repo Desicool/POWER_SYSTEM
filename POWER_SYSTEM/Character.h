@@ -3,13 +3,15 @@
 class Character
 {
 private:
-	string character_name;
+	wstring character_name;
 	string ID;
 	int privilege;
 public:
 	Character();
 	//根据userID获取系统角色
 	void init(string userID);
+	int getPrivilege() { return privilege; }
+	wstring get_character_name() { return character_name; }
 	~Character();
 };
 
