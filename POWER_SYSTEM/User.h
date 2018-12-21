@@ -48,6 +48,6 @@ public:
 	~User();
 	string regist();
 	vector<CString> get_all();
-	bool ban_user(string name);
+	bool update_user(string name,int x);
 };
 #endif

@@ -33,6 +33,7 @@ void CUpdate::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CUpdate, CDialog)
 	ON_WM_SIZE()
 	ON_BN_CLICKED(IDC_BAN_BUTTON, &CUpdate::OnBnClickedBanButton)
+	ON_BN_CLICKED(IDC_FREE_BUTTON, &CUpdate::OnBnClickedFreeButton)
 END_MESSAGE_MAP()
 
 
@@ -100,8 +101,22 @@ void CUpdate::OnBnClickedBanButton()
 	CString name;
 	user_list.GetText(cur, name);
 	CString msg;
-	if (user->ban_user((LPCSTR)(CStringA)name))
+	if (user->update_user((LPCSTR)(CStringA)name, -1))
 		msg = CString("操作成功，已禁止该用户登录");
+	else
+		msg = CString("出现错误，请重试");
+	MessageBox(msg);
+}
+
+
+void CUpdate::OnBnClickedFreeButton()
+{
+	int cur = user_list.GetCurSel();
+	CString name;
+	user_list.GetText(cur, name);
+	CString msg;
+	if (user->update_user((LPCSTR)(CStringA)name, 0))
+		msg = CString("操作成功，已允许该用户登录");
 	else
 		msg = CString("出现错误，请重试");
 	MessageBox(msg);

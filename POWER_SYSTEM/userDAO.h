@@ -9,5 +9,5 @@ namespace userDAO{
 	sql::ResultSet* get_user_info(string ID);
 	int regist(string _name,string _pwd,string _phone,string _address,string _email,string _identity);
 	vector<CString> get_all();
-	bool ban_user(string _name);
+	bool update_user(string _name,int x);
 }

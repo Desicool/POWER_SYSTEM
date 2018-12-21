@@ -139,7 +139,7 @@ vector<CString> User::get_all()
 	return userDAO::get_all();
 }
 
-bool User::ban_user(string name)
+bool User::update_user(string name,int x)
 {
-	return userDAO::ban_user(name);
+	return userDAO::update_user(name, x);
 }

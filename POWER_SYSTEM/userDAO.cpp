@@ -137,12 +137,13 @@ vector<CString> userDAO::get_all()
 	return ret;
 }
 
-bool userDAO::ban_user(string _name)
+bool userDAO::update_user(string _name,int x)
 {
 	Connection *db = new Connection();
 	sql::PreparedStatement *pst = db->con->prepareStatement(sql::SQLString(
-		"update user set status = -1 where username = ?")
+		"update user set status = ? where username = ?")
 	);
-	pst->setString(1, _name.c_str());
+	pst->setInt(1, x);
+	pst->setString(2, _name.c_str());
 	return pst->executeUpdate();
 }
