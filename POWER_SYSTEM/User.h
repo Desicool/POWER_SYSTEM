@@ -47,6 +47,7 @@ public:
 	int login();
 	~User();
 	string regist();
-	
+	vector<CString> get_all();
+	bool ban_user(string name);
 };
 #endif

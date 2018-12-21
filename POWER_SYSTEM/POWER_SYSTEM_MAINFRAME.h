@@ -3,6 +3,7 @@
 #include "QueryDlg.h"
 #include "InfoDlg.h"
 #include "AddUserDlg.h"
+#include "Update.h"
 // POWER_SYSTEM_MAINFRAME 对话框
 #include "POWER_SYSTEMDlg.h"
 #include "User.h"
@@ -32,6 +33,7 @@ public:
 	CQueryDlg query_page;
 	InfoDlg info_page;
 	CAddUserDlg add_user_page;
+	CUpdate update_page;
 	CDialog* pDlgPage[20];
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	// 用于实现功能页面的切换

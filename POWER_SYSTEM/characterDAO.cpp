@@ -36,6 +36,9 @@ int characterDAO::get_privilege(string characterID)
 		case 2:
 			ret |= P_ADD_USER;
 			break;
+		case 3:
+			ret |= P_UPDATE;
+			break;
 		}
 	}
 	delete pst;

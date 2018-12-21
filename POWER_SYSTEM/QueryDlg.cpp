@@ -81,16 +81,21 @@ void CQueryDlg::OnBnClickedQueryButton()
 	// TODO: 在此添加控件通知处理程序代码
 	CString msg, ad;
 	ad = CString(character->get_character_name().c_str());
-	msg.Format(_T("您当前的身份为：%s\r\n您当前可使用的功能有：\r\n"),ad);
+	msg.Format(_T("您当前的身份为：\t%s\r\n您当前可使用的功能有：\r\n"),ad);
 	int tmp = character->getPrivilege();
 	if (tmp & P_QUERY)
 	{
-		ad.Format(_T("\t查询功能\r\n"));
+		ad.Format(_T("\t\t查询功能\r\n"));
 		msg += ad;
 	}
 	if (tmp & P_ADD_USER)
 	{
-		ad.Format(_T("\t添加用户\r\n"));
+		ad.Format(_T("\t\t添加用户\r\n"));
+		msg += ad;
+	}
+	if (tmp & P_UPDATE)
+	{
+		ad.Format(_T("\t\t更新用户权限\r\n"));
 		msg += ad;
 	}
 	MessageBox(msg);

@@ -99,7 +99,13 @@ BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 		add_user_page.Create(IDD_ADD_USER, &func_tab);
 		add_user_page.MoveWindow(&rc);
 	}
-
+	if (character->getPrivilege() & P_UPDATE)
+	{
+		func_tab.InsertItem(nItem, TEXT("更新用户权限"));
+		pDlgPage[nItem++] = &update_page;
+		update_page.Create(IDD_UPDATE, &func_tab);
+		update_page.MoveWindow(&rc);
+	}
 	func_tab.InsertItem(nItem, TEXT("我的"));
 	info_page.Create(IDD_PERSONAL_INFO, &func_tab);
 	pDlgPage[nItem++] = &info_page;

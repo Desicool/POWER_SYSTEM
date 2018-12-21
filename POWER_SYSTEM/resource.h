@@ -46,10 +46,10 @@
 #define IDC_EMAIL_REG_INPUT             1041
 #define IDC_EMAIL_REG_STATIC            1042
 #define IDC_ADD_USER_BUTTON             1043
-#define IDC_LIST1                       1044
 #define IDC_USER_LIST                   1044
 #define IDC_BAN_BUTTON                  1045
 #define IDC_FREE_BUTTON                 1046
+#define IDC_LIST1                       1048
 
 // Next default values for new objects
 // 
@@ -57,7 +57,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        142
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1047
+#define _APS_NEXT_CONTROL_VALUE         1049
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

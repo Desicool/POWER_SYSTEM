@@ -5,7 +5,7 @@ string userDAO::login_check(string username, string pwd)
 {
 	Connection *db = new Connection();
 	sql::PreparedStatement *pst = db->con->prepareStatement(sql::SQLString(
-		"select userID from user where username = ? and password = ?")
+		"select userID from user where username = ? and password = ? and status != -1")
 	);
 	
 	pst->setString(1, username.c_str());
@@ -103,6 +103,12 @@ int userDAO::regist(string _name, string _pwd, string _phone, string _address, s
 		else
 			pst->setNull(7, 0);
 		pst->executeUpdate();
+		delete pst;
+		pst = db->con->prepareStatement((sql::SQLString)
+			"insert into `user-character` set userID = ?,characterID = 'C002'"
+		);
+		pst->setString(1, ID.c_str());
+		pst->executeUpdate();
 	}
 	catch (sql::SQLException e)
 	{
@@ -111,5 +117,32 @@ int userDAO::regist(string _name, string _pwd, string _phone, string _address, s
 	}
 	return 0;
 }
+
 #undef USER_EXISTS
 #undef INSERT_FAIL
+vector<CString> userDAO::get_all()
+{
+	Connection *db = new Connection();
+	sql::PreparedStatement *pst = db->con->prepareStatement(sql::SQLString(
+		"select username from user")
+	);
+	sql::ResultSet* rs = pst->executeQuery();
+	vector<CString>ret;
+	while (rs->next())
+	{
+		ret.push_back(UTF82WCS(rs->getString("username").c_str()));
+	}
+	delete pst;
+	delete db;
+	return ret;
+}
+
+bool userDAO::ban_user(string _name)
+{
+	Connection *db = new Connection();
+	sql::PreparedStatement *pst = db->con->prepareStatement(sql::SQLString(
+		"update user set status = -1 where username = ?")
+	);
+	pst->setString(1, _name.c_str());
+	return pst->executeUpdate();
+}

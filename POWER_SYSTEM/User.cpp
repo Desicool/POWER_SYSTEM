@@ -133,3 +133,13 @@ string User::regist()
 		return "插入失败，请检查软件及数据库";
 	
 }
+
+vector<CString> User::get_all()
+{
+	return userDAO::get_all();
+}
+
+bool User::ban_user(string name)
+{
+	return userDAO::ban_user(name);
+}
