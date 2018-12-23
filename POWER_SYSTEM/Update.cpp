@@ -44,7 +44,6 @@ BOOL CUpdate::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// TODO:  在此添加额外的初始化
 	GetWindowRect(&rc);
 	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
 	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
@@ -72,7 +71,6 @@ void CUpdate::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 
-	// TODO: 在此处添加消息处理程序代码
 	for (auto pWnd : item_list)
 	{
 		if (pWnd)//判断是否为空，因为对话框创建时会调用此函数，而当时控件还未创建
@@ -90,13 +88,11 @@ void CUpdate::OnSize(UINT nType, int cx, int cy)
 	}
 	GetClientRect(&rc);//将变化后的对话框大小设为旧大小
 
-	// TODO: 在此处添加消息处理程序代码
 }
 
 
 void CUpdate::OnBnClickedBanButton()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	int cur = user_list.GetCurSel();
 	CString name;
 	user_list.GetText(cur, name);

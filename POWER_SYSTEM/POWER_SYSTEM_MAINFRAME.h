@@ -4,6 +4,7 @@
 #include "InfoDlg.h"
 #include "AddUserDlg.h"
 #include "Update.h"
+#include "DistributeDlg.h"
 // POWER_SYSTEM_MAINFRAME 对话框
 #include "POWER_SYSTEMDlg.h"
 #include "User.h"
@@ -28,12 +29,13 @@ private:
 	CFont* m_Font;
 	User* user;
 	Character* character;
-public:
-	int m_CurSelTab;
 	CQueryDlg query_page;
 	InfoDlg info_page;
 	CAddUserDlg add_user_page;
 	CUpdate update_page;
+	CDistributeDlg d_characterDlg;
+public:
+	int m_CurSelTab;
 	CDialog* pDlgPage[20];
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	// 用于实现功能页面的切换

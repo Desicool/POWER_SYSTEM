@@ -40,7 +40,6 @@ void CAddUserDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialogEx::OnSize(nType, cx, cy);
 
-	// TODO: 在此处添加消息处理程序代码
 	for (auto pWnd : item_list)
 	{
 		if (pWnd)//判断是否为空，因为对话框创建时会调用此函数，而当时控件还未创建
@@ -66,7 +65,6 @@ BOOL CAddUserDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	//GetWindowRect(&rc);
-	// TODO:  在此添加额外的初始化
 	item_list.push_back(GetDlgItem(IDC_USERNAME_REG_STATIC));
 	item_list.push_back(GetDlgItem(IDC_IDENTITY_REG_STATIC));
 	item_list.push_back(GetDlgItem(IDC_PHONE_REG_STATIC));
@@ -88,7 +86,6 @@ BOOL CAddUserDlg::OnInitDialog()
 
 void CAddUserDlg::OnBnClickedAddUserButton()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	User* new_user = new User();
 	CString name, address, pwd = L"123456", email, identity,phone;
 	GetDlgItem(IDC_USERNAME_REG_INPUT2)->GetWindowTextW(name);

@@ -39,7 +39,47 @@ int characterDAO::get_privilege(string characterID)
 		case 3:
 			ret |= P_UPDATE;
 			break;
+		case 4:
+			ret |= P_DISTRIBUTE_CHARACTER;
+			break;
+		case 6:
+			ret |= P_DISTRIBUTE_FUNC;
+			break;
 		}
+	}
+	delete pst;
+	delete db;
+	return ret;
+}
+
+vector<CString> characterDAO::get_all()
+{
+	Connection *db = new Connection();
+	sql::PreparedStatement *pst = db->con->prepareStatement(sql::SQLString(
+		"select characterName from `character`")
+	);
+	sql::ResultSet* rs = pst->executeQuery();
+	vector<CString>ret;
+	while (rs->next())
+	{
+		ret.push_back(UTF82WCS(rs->getString("characterName").c_str()));
+	}
+	delete pst;
+	delete db;
+	return ret;
+}
+
+vector<CString> characterDAO::get_all_privilege()
+{
+	Connection *db = new Connection();
+	sql::PreparedStatement *pst = db->con->prepareStatement(sql::SQLString(
+		"select functionName from function")
+	);
+	sql::ResultSet* rs = pst->executeQuery();
+	vector<CString>ret;
+	while (rs->next())
+	{
+		ret.push_back(UTF82WCS(rs->getString("functionName").c_str()));
 	}
 	delete pst;
 	delete db;

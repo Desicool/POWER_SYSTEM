@@ -108,6 +108,9 @@
     <ClInclude Include="Update.h">
       <Filter>头文件\View\MainFrame\func_page</Filter>
     </ClInclude>
+    <ClInclude Include="DistributeDlg.h">
+      <Filter>头文件\View\MainFrame\func_page</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="POWER_SYSTEM.cpp">
@@ -150,6 +153,9 @@
       <Filter>源文件\service</Filter>
     </ClCompile>
     <ClCompile Include="Update.cpp">
+      <Filter>源文件\View\MainFrame\func_page</Filter>
+    </ClCompile>
+    <ClCompile Include="DistributeDlg.cpp">
       <Filter>源文件\View\MainFrame\func_page</Filter>
     </ClCompile>
   </ItemGroup>

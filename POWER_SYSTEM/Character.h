@@ -12,6 +12,9 @@ public:
 	void init(string userID);
 	int getPrivilege() { return privilege; }
 	wstring get_character_name() { return character_name; }
+	vector<CString> get_all();
+	vector<CString> get_all_privilege();
+	//TODO: 实时查询是否存在某operation权限
 	~Character();
 };
 

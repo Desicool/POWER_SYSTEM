@@ -115,8 +115,8 @@ BOOL CPOWER_SYSTEMDlg::OnInitDialog()
 	GetDlgItem(IDC_LOGINNAME)->SetFont(m_Font, FALSE);
 	GetDlgItem(IDC_LOGIN_NAME_INPUT)->SetFont(m_Font, NULL);
 	GetDlgItem(IDC_PASSWORD)->SetFont(m_Font, FALSE);
-	GetDlgItem(IDC_PASSWORD_INPUT)->SetFont(m_Font, FALSE);
-	((CEdit*)GetDlgItem(IDC_PASSWORD_INPUT))->SetPasswordChar(L'*');
+	GetDlgItem(IDC_PWD_INPUT)->SetFont(m_Font, FALSE);
+	((CEdit*)GetDlgItem(IDC_PWD_INPUT))->SetPasswordChar(L'*');
 	//m_Edit->SetFont(m_Font);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }

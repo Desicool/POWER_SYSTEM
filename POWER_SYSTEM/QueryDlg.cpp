@@ -41,7 +41,6 @@ BOOL CQueryDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	GetWindowRect(&rc);
-	// TODO:  在此添加额外的初始化
 	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
 	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
 	character = pWnd->getCharacter();
@@ -55,7 +54,6 @@ void CQueryDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 
-	// TODO: 在此处添加消息处理程序代码
 	CWnd *pWnd;
 
 	pWnd = GetDlgItem(IDC_QUERY_BUTTON);
@@ -78,7 +76,6 @@ void CQueryDlg::OnSize(UINT nType, int cx, int cy)
 
 void CQueryDlg::OnBnClickedQueryButton()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	CString msg, ad;
 	ad = CString(character->get_character_name().c_str());
 	msg.Format(_T("您当前的身份为：\t%s\r\n您当前可使用的功能有：\r\n"),ad);

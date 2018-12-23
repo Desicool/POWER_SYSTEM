@@ -41,7 +41,6 @@ BOOL InfoDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	
-	// TODO:  在此添加额外的初始化
 	GetWindowRect(&rc);
 	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
 	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
@@ -61,7 +60,6 @@ void InfoDlg::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 
-	// TODO: 在此处添加消息处理程序代码
 	CWnd *pWnd;
 
 	pWnd = GetDlgItem(IDC_QUIT_BUTTON);
@@ -84,13 +82,12 @@ void InfoDlg::OnSize(UINT nType, int cx, int cy)
 
 void InfoDlg::OnBnClickedQuitButton()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	delete user;
 	//OnCancel();
 	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
 	CPOWER_SYSTEMDlg* pLogin = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
 	pLogin->GetDlgItem(IDC_LOGIN_NAME_INPUT)->SetWindowTextW(NULL);
-	pLogin->GetDlgItem(IDC_PASSWORD_INPUT)->SetWindowTextW(NULL);
+	pLogin->GetDlgItem(IDC_PWD_INPUT)->SetWindowTextW(NULL);
 
 	hWnd = ::FindWindow(NULL, L"权限系统");
 	POWER_SYSTEM_MAINFRAME* pWnd = (POWER_SYSTEM_MAINFRAME*)POWER_SYSTEM_MAINFRAME::FromHandle(hWnd);
@@ -102,6 +99,4 @@ void InfoDlg::OnBnClickedQuitButton()
 void InfoDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
-
-	// TODO: 在此处添加消息处理程序代码
 }

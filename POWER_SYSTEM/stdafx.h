@@ -56,6 +56,9 @@
 #endif
 
 
-#define P_QUERY		0B1
-#define P_ADD_USER	0B10
-#define P_UPDATE	0B100
+#define P_QUERY					0B1
+#define P_ADD_USER				0B10
+#define P_UPDATE				0B100
+#define P_DISTRIBUTE_CHARACTER	0B1000
+#define P_ADD_CHARACTER			0B10000
+#define P_DISTRIBUTE_FUNC		0B100000

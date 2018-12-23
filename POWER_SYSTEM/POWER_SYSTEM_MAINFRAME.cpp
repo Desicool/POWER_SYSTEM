@@ -45,7 +45,6 @@ int POWER_SYSTEM_MAINFRAME::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CDialogEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	// TODO:  在此添加您专用的创建代码
 
 	return 0;
 }
@@ -54,7 +53,6 @@ int POWER_SYSTEM_MAINFRAME::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 void POWER_SYSTEM_MAINFRAME::OnTcnSelchangeFuncTab(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	// TODO: 在此添加控件通知处理程序代码
 	//把当前的页面隐藏起来
 	pDlgPage[m_CurSelTab]->ShowWindow(SW_HIDE);
 	//得到新的页面索引
@@ -68,9 +66,8 @@ void POWER_SYSTEM_MAINFRAME::OnTcnSelchangeFuncTab(NMHDR *pNMHDR, LRESULT *pResu
 
 BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 {
-	CDialogEx::OnInitDialog();                        
+	CDialogEx::OnInitDialog();
 	this->SetWindowTextW(L"权限系统");
-	// TODO:  在此添加额外的初始化
 	//获取当前用户与权限角色
 	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");
 	CPOWER_SYSTEMDlg* pWnd = (CPOWER_SYSTEMDlg*)CPOWER_SYSTEMDlg::FromHandle(hWnd);
@@ -106,10 +103,28 @@ BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 		update_page.Create(IDD_UPDATE, &func_tab);
 		update_page.MoveWindow(&rc);
 	}
+	if (character->getPrivilege() & P_DISTRIBUTE_CHARACTER)
+	{
+		func_tab.InsertItem(nItem, TEXT("分配角色"));
+		pDlgPage[nItem++] = &d_characterDlg;
+		d_characterDlg.Create(IDD_DISTRIBUTE_CHARACTER, &func_tab);
+		d_characterDlg.MoveWindow(&rc);
+		d_characterDlg.setLists(true);
+	}
+	if (character->getPrivilege() & P_DISTRIBUTE_FUNC)
+	{
+		func_tab.InsertItem(nItem, TEXT("分配功能"));
+		pDlgPage[nItem++] = &d_characterDlg;
+		//d_functionDlg.Create(IDD_DISTRIBUTE_FUNC, &func_tab);
+		//d_functionDlg.MoveWindow(&rc);
+		//d_functionDlg.setLists(false);
+	}
 	func_tab.InsertItem(nItem, TEXT("我的"));
 	info_page.Create(IDD_PERSONAL_INFO, &func_tab);
 	pDlgPage[nItem++] = &info_page;
 	info_page.MoveWindow(&rc);
+	CDialog* m_page = new CDialog();
+	
 	//显示初始页面
 	pDlgPage[0]->ShowWindow(SW_SHOW);
 	//保存当前选择
@@ -132,15 +147,12 @@ void POWER_SYSTEM_MAINFRAME::setUser(User * us)
 void POWER_SYSTEM_MAINFRAME::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialogEx::OnShowWindow(bShow, nStatus);
-
-	// TODO: 在此处添加消息处理程序代码
 	
 }
 
 
 void POWER_SYSTEM_MAINFRAME::OnClose()
 {
-	// TODO: 在此添加消息处理程序代码和/或调用默认值
 
 	CDialogEx::OnClose();
 	HWND hWnd = ::FindWindow(NULL, L"POWER_SYSTEM");

@@ -7,6 +7,16 @@ Character::Character()
 }
 
 
+vector<CString> Character::get_all()
+{
+	return characterDAO::get_all();
+}
+
+vector<CString> Character::get_all_privilege()
+{
+	return characterDAO::get_all_privilege();
+}
+
 Character::~Character()
 {
 }
