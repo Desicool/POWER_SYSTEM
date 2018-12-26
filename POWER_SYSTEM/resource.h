@@ -14,8 +14,7 @@
 #define IDD_ADD_USER                    138
 #define IDD_UPDATE                      140
 #define IDD_DISTRIBUTE_CHARACTER        142
-#define IDD_DIALOG1                     144
-#define IDD_DISTRIBUTE_FUNC             144
+#define IDD_ADD_CHARACTER               146
 #define IDC_LOGIN_NAME_INPUT            1003
 #define IDC_PWD_INPUT                   1004
 #define IDC_LOGINNAME                   1005
@@ -49,14 +48,17 @@
 #define IDC_USERLIST_STATIC             1052
 #define IDC_CHECK_BUTTON                1053
 #define IDC_CHARACTERLIST_STATIC        1054
+#define IDC_CNAME_INPUT                 1055
+#define IDC_CNAME_STATIC                1056
+#define IDC_ADD_CHARACTER_BUTTON        1057
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        146
+#define _APS_NEXT_RESOURCE_VALUE        148
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1055
+#define _APS_NEXT_CONTROL_VALUE         1058
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

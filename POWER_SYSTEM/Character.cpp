@@ -17,6 +17,21 @@ vector<CString> Character::get_all_privilege()
 	return characterDAO::get_all_privilege();
 }
 
+bool Character::d_character(string username, string cname)
+{
+	return characterDAO::d_character(username, cname);
+}
+
+bool Character::d_function(string cname, string fname)
+{
+	return characterDAO::d_function(cname, fname);
+}
+
+bool Character::add_character(string cname)
+{
+	return characterDAO::add_character(cname);
+}
+
 Character::~Character()
 {
 }

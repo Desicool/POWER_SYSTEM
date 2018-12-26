@@ -193,6 +193,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddCharacterDlg.h" />
     <ClInclude Include="AddUserDlg.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="characterDAO.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="userDAO.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddCharacterDlg.cpp" />
     <ClCompile Include="AddUserDlg.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="characterDAO.cpp" />

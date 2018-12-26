@@ -2,7 +2,7 @@
 #include "User.h"
 #include "Character.h"
 #include "afxwin.h"
-
+#include "solveUTF8.h"
 // CDistributeDlg ¶Ô»°¿ò
 
 class CDistributeDlg : public CDialog
@@ -35,4 +35,5 @@ public:
 	CListBox listB;
 	void setLists(bool is_character);
 	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
+	afx_msg void OnBnClickedCheckButton();
 };

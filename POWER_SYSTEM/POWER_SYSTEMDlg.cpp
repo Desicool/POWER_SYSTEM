@@ -103,7 +103,6 @@ BOOL CPOWER_SYSTEMDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-	// TODO: 在此添加额外的初始化代码
 	m_Font = new CFont();
 	/*m_Font->
 		CreateFont(20, 25, 0, 0, 100, FALSE, FALSE, 0, ANSI_CHARSET, 
@@ -188,14 +187,12 @@ void CPOWER_SYSTEMDlg::Login()
 		//tmp.setUser(user);
 		this->ShowWindow(SW_SHOW);
 	}
-	// TODO: 在此添加控件通知处理程序代码
 	SendMessage(WM_DESTROY);
 }
 
 
 void CPOWER_SYSTEMDlg::OnBnClickedButton2()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	OnCancel();
 }
 

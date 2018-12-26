@@ -35,6 +35,7 @@ void CDistributeDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CDistributeDlg, CDialog)
 	ON_WM_SIZE()
 	ON_WM_SHOWWINDOW()
+	ON_BN_CLICKED(IDC_CHECK_BUTTON, &CDistributeDlg::OnBnClickedCheckButton)
 END_MESSAGE_MAP()
 
 
@@ -61,7 +62,8 @@ BOOL CDistributeDlg::OnInitDialog()
 	m_font->CreatePointFont(150, LPCTSTR("Arial"), NULL);
 	listA.SetFont(m_font);
 	listB.SetFont(m_font);
-
+	GetDlgItem(IDC_USERLIST_STATIC)->SetFont(m_font);
+	GetDlgItem(IDC_CHARACTERLIST_STATIC)->SetFont(m_font);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // 异常: OCX 属性页应返回 FALSE
 }
@@ -106,6 +108,8 @@ void CDistributeDlg::setLists(bool is_character)
 	else
 	{
 		vector<CString>uname = character->get_all();
+		this->GetDlgItem(IDC_USERLIST_STATIC)->SetWindowTextW(L"角色");
+		this->GetDlgItem(IDC_CHARACTERLIST_STATIC)->SetWindowTextW(L"功能");
 		for (auto p : uname)
 			listA.AddString(p);
 		uname = character->get_all_privilege();
@@ -120,9 +124,46 @@ void CDistributeDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialog::OnShowWindow(bShow, nStatus);
 
-	// TODO: 在此处添加消息处理程序代码
 	HWND hWnd = ::FindWindow(NULL, L"权限系统");
 	POWER_SYSTEM_MAINFRAME* pWnd = (POWER_SYSTEM_MAINFRAME*)POWER_SYSTEM_MAINFRAME::FromHandle(hWnd);
 	int cur = pWnd->m_CurSelTab;
 	setLists(cur == 3);
+}
+
+
+void CDistributeDlg::OnBnClickedCheckButton()
+{
+	HWND hWnd = ::FindWindow(NULL, L"权限系统");
+	POWER_SYSTEM_MAINFRAME* pWnd = (POWER_SYSTEM_MAINFRAME*)POWER_SYSTEM_MAINFRAME::FromHandle(hWnd);
+	int cur = pWnd->m_CurSelTab;
+	CString msg;
+	if (cur == 3)
+	{
+		//分配character
+		int t = listA.GetCurSel();
+		CString us,ch;
+		listA.GetText(t, us);
+		t = listB.GetCurSel();
+		listB.GetText(t, ch);
+		if (character->d_character((LPCSTR)(CStringA)us, UnicodeToUtf8(ch)))
+			msg = CString("分配成功！");
+		else
+			msg = CString("出错，请稍后重试。");
+		MessageBox(msg);
+	}
+	else
+	{
+		//分配function
+
+		int t = listA.GetCurSel();
+		CString us, ch;
+		listA.GetText(t, us);
+		t = listB.GetCurSel();
+		listB.GetText(t, ch);
+		if (character->d_function(UnicodeToUtf8(us), UnicodeToUtf8(ch)))
+			msg = CString("分配成功！");
+		else
+			msg = CString("出错，请稍后重试。");
+		MessageBox(msg);
+	}
 }

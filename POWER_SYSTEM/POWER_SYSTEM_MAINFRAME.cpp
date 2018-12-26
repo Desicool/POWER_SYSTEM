@@ -82,6 +82,7 @@ BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 	rc.right -= 0;
 	//为Tab Control增加页面
 	int nItem = 0;
+	bool flag = true;
 	if (character->getPrivilege() & P_QUERY)
 	{
 		func_tab.InsertItem(nItem, _T("查询"));
@@ -107,6 +108,7 @@ BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 	{
 		func_tab.InsertItem(nItem, TEXT("分配角色"));
 		pDlgPage[nItem++] = &d_characterDlg;
+		flag = false;
 		d_characterDlg.Create(IDD_DISTRIBUTE_CHARACTER, &func_tab);
 		d_characterDlg.MoveWindow(&rc);
 		d_characterDlg.setLists(true);
@@ -115,9 +117,23 @@ BOOL POWER_SYSTEM_MAINFRAME::OnInitDialog()
 	{
 		func_tab.InsertItem(nItem, TEXT("分配功能"));
 		pDlgPage[nItem++] = &d_characterDlg;
+		if (flag)
+		{
+			d_characterDlg.Create(IDD_DISTRIBUTE_CHARACTER, &func_tab);
+			d_characterDlg.MoveWindow(&rc);
+			d_characterDlg.setLists(false);
+			flag = true;
+		}
 		//d_functionDlg.Create(IDD_DISTRIBUTE_FUNC, &func_tab);
 		//d_functionDlg.MoveWindow(&rc);
 		//d_functionDlg.setLists(false);
+	}
+	if (character->getPrivilege() & P_ADD_CHARACTER)
+	{
+		func_tab.InsertItem(nItem, TEXT("添加角色"));
+		pDlgPage[nItem++] = &add_character_page;
+		add_character_page.Create(IDD_ADD_CHARACTER, &func_tab);
+		add_character_page.MoveWindow(&rc);
 	}
 	func_tab.InsertItem(nItem, TEXT("我的"));
 	info_page.Create(IDD_PERSONAL_INFO, &func_tab);

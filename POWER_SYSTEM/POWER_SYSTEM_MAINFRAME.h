@@ -5,6 +5,7 @@
 #include "AddUserDlg.h"
 #include "Update.h"
 #include "DistributeDlg.h"
+#include "AddCharacterDlg.h"
 // POWER_SYSTEM_MAINFRAME ¶Ô»°¿ò
 #include "POWER_SYSTEMDlg.h"
 #include "User.h"
@@ -34,6 +35,7 @@ private:
 	CAddUserDlg add_user_page;
 	CUpdate update_page;
 	CDistributeDlg d_characterDlg;
+	CAddCharacterDlg add_character_page;
 public:
 	int m_CurSelTab;
 	CDialog* pDlgPage[20];
